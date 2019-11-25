@@ -20,3 +20,68 @@
 .App-link {
   color: #09d3ac;
 }
+
+$blue: #ddedff;
+$dark-blue: #0087ff;
+
+$yellow: #fef0b2;
+$dark-yellow: #ffbd00;
+
+$pink: #fad2e1;
+$dark-pink: #f84f7f;
+
+$purple: #dfccff;
+$dark-purple: #7f51f4;
+
+@mixin color-panel($color1, $color2) {
+  border: 1px solid $color2;
+  background-color: $color1;
+  color: $color2;
+}
+
+body {
+  margin: 4rem 0;
+}
+
+.title {
+  margin-bottom: 2rem;
+}
+
+.numberCircle {
+  margin-top: 30px;
+  margin-left: 100px;
+  width: 200px;
+  line-height: 200px;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 80px;
+  border: 2px solid #666;
+  color: black;
+}
+
+#percent {
+  font-size: 30px;
+  line-height: 30px;
+}
+
+.panel {
+  border-radius: 0.3rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+
+  &.panel-blue {
+    @include color-panel($blue, $dark-blue);
+  }
+
+  &.panel-yellow {
+    @include color-panel($yellow, $dark-yellow);
+  }
+
+  &.panel-pink {
+    @include color-panel($pink, $dark-pink);
+  }
+
+  &.panel-purple {
+    @include color-panel($purple, $dark-purple);
+  }
+}
