@@ -1,7 +1,7 @@
 import {
   GET_DATA_CURRENT,
   GET_DATA_TODAY,
-  GET_DATA_DAY,
+  GET_DATA_YESTERDAY,
   GET_DATA_WEEK,
   SET_LOADING
 } from '../types.js';
@@ -16,8 +16,7 @@ export default (state, action) => {
     case GET_DATA_CURRENT:
       return {
         ...state,
-        current: action.payload,
-        loading: false
+        current: action.payload
       };
     case GET_DATA_TODAY:
       return {
@@ -25,7 +24,7 @@ export default (state, action) => {
         today: action.payload,
         loading: false
       };
-    case GET_DATA_DAY:
+    case GET_DATA_YESTERDAY:
       return {
         ...state,
         day: action.payload,

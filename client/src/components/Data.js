@@ -1,13 +1,25 @@
 import React, { useContext, useEffect } from 'react';
+import CountUp from 'react-countup';
 import Spinner from './layout/Spinner';
+import Chart from './Chart';
 import GymContext from '../context/gym/gymContext';
 
 const Data = () => {
   const gymContext = useContext(GymContext);
-  const { getCurrent, current, loading } = gymContext;
+  const {
+    getCurrent,
+    getToday,
+    getYesterday,
+    current,
+    today,
+    yesterday,
+    loading
+  } = gymContext;
 
   useEffect(() => {
     getCurrent();
+    getToday();
+    getYesterday();
     // eslint-disable-next-line
   }, []);
 
@@ -42,12 +54,12 @@ const Data = () => {
                   className="numberCircle"
                   style={{ backgroundColor: hColour }}
                 >
-                  {Math.round(hPercent)}
+                  <CountUp end={Math.round(hPercent)} />
                   <span id="percent">%</span>
                 </div>
               </div>
               <div className="col">
-                <div className="numberCircle">30</div>
+                <Chart data={today['holywell']} />
               </div>
             </div>
           </div>
@@ -63,12 +75,12 @@ const Data = () => {
                   className="numberCircle"
                   style={{ backgroundColor: pColour }}
                 >
-                  {Math.round(pPercent)}
+                  <CountUp end={Math.round(pPercent)} />
                   <span id="percent">%</span>
                 </div>
               </div>
               <div className="col">
-                <div className="numberCircle">30</div>
+                <Chart data={today['powerbase']} />
               </div>
             </div>
           </div>
