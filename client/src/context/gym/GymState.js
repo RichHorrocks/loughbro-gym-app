@@ -23,7 +23,7 @@ const GymState = props => {
   // Get the current, live counts for the gym.
   const getCurrent = async () => {
     setLoading();
-    const res = await axios.get('http://localhost:5000/data');
+    const res = await axios.get('/data');
 
     dispatch({
       type: GET_DATA_CURRENT,
@@ -34,7 +34,7 @@ const GymState = props => {
   const getToday = async () => {
     setLoading();
     setTimeout(async function() {
-      const res = await axios.get('http://localhost:5000/today');
+      const res = await axios.get('/today');
 
       dispatch({
         type: GET_DATA_TODAY,
@@ -46,7 +46,7 @@ const GymState = props => {
   const getYesterday = async () => {
     setLoading();
     setTimeout(async function() {
-      const res = await axios.get('http://localhost:5000/yesterday');
+      const res = await axios.get('/yesterday');
       dispatch({
         type: GET_DATA_YESTERDAY,
         payload: res.data
