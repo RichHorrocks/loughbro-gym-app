@@ -6,7 +6,6 @@ import {
   GET_DATA_CURRENT,
   GET_DATA_TODAY,
   GET_DATA_YESTERDAY,
-  GET_DATA_WEEK,
   SET_LOADING
 } from '../types';
 
@@ -24,9 +23,7 @@ const GymState = props => {
   // Get the current, live counts for the gym.
   const getCurrent = async () => {
     setLoading();
-    console.log('GET Current data...');
     const res = await axios.get('http://localhost:5000/data');
-    console.log('GET Current: ', res.data);
 
     dispatch({
       type: GET_DATA_CURRENT,
@@ -37,9 +34,7 @@ const GymState = props => {
   const getToday = async () => {
     setLoading();
     setTimeout(async function() {
-      console.log('GET Today data...');
       const res = await axios.get('http://localhost:5000/today');
-      console.log('GET Today: ', res.data);
 
       dispatch({
         type: GET_DATA_TODAY,
@@ -51,10 +46,7 @@ const GymState = props => {
   const getYesterday = async () => {
     setLoading();
     setTimeout(async function() {
-      console.log('GET Yesterday data...');
       const res = await axios.get('http://localhost:5000/yesterday');
-      console.log('GET Yesterday: ', res.data);
-
       dispatch({
         type: GET_DATA_YESTERDAY,
         payload: res.data

@@ -11,22 +11,20 @@ import {
 } from 'recharts';
 
 const Chart = ({ data }) => {
-  console.log('CHART: ', data);
-
   const dataWithTimes = data.map(item => {
     const time = format(new Date(item.date), 'HH:mm');
     const percentage = (item.count / 180) * 100;
 
     return {
       ...item,
-      percentage: percentage,
+      percentage: Math.round(percentage),
       date: time
     };
   });
 
   return (
     <LineChart
-      width={600}
+      width={700}
       height={300}
       data={dataWithTimes}
       margin={{
@@ -37,14 +35,14 @@ const Chart = ({ data }) => {
       }}
     >
       <CartesianGrid strokeDasharray="3 3" />
-      <XAxis domain={['06:30', '22:00']} dataKey="date" />
-      <YAxis domain={[0, 100]} />
+      <XAxis dataKey="date" />
+      <YAxis label={{ value: '%', position: 'insideLeft' }} domain={[0, 100]} />
       <Tooltip />
       <Legend />
       <Line
+        name="Today"
         type="monotone"
         dataKey="percentage"
-        legendType="none"
         stroke="#8884d8"
         activeDot={{ r: 8 }}
       />

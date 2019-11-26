@@ -12,7 +12,6 @@ const Data = () => {
     getYesterday,
     current,
     today,
-    yesterday,
     loading
   } = gymContext;
 
@@ -44,6 +43,7 @@ const Data = () => {
 
   return (
     <div className="container">
+      <h1 className="text-center">How busy is the gym?</h1>
       <div className="row">
         <div className="col">
           <div className="panel panel-blue">
