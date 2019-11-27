@@ -12,6 +12,7 @@ const Data = () => {
     getYesterday,
     current,
     today,
+    yesterday,
     loading
   } = gymContext;
 
@@ -59,7 +60,7 @@ const Data = () => {
                 </div>
               </div>
               <div className="col">
-                <Chart data={today['holywell']} />
+                <Chart data={yesterday['holywell']} />
               </div>
             </div>
           </div>
@@ -80,7 +81,7 @@ const Data = () => {
                 </div>
               </div>
               <div className="col">
-                <Chart data={today['powerbase']} />
+                <Chart data={yesterday['powerbase']} />
               </div>
             </div>
           </div>

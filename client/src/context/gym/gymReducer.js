@@ -21,13 +21,12 @@ export default (state, action) => {
     case GET_DATA_TODAY:
       return {
         ...state,
-        today: action.payload,
-        loading: false
+        today: action.payload
       };
     case GET_DATA_YESTERDAY:
       return {
         ...state,
-        day: action.payload,
+        yesterday: action.payload,
         loading: false
       };
     case GET_DATA_WEEK:

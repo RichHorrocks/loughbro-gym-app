@@ -47,6 +47,7 @@ const GymState = props => {
     setLoading();
     setTimeout(async function() {
       const res = await axios.get('/yesterday');
+
       dispatch({
         type: GET_DATA_YESTERDAY,
         payload: res.data
