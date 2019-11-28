@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react';
+import { format } from 'date-fns';
 import CountUp from 'react-countup';
 import Spinner from './layout/Spinner';
 import Chart from './Chart';
@@ -27,6 +28,41 @@ const Data = () => {
     return <Spinner />;
   }
 
+  const combineData = (today, yesterday) => {
+    const combinedDataArray = [];
+
+    // For each entry in today's data, find the data from yesterday for the
+    // same time.
+    today.forEach(todayItem => {
+      // Create a date object.
+      const tDate = new Date(todayItem.date);
+      let yesterdayPercent = null;
+
+      // Find the count from the same time yesterday.
+      for (let i = 0; i < yesterday.length; i++) {
+        const yDate = new Date(yesterday[i].date);
+
+        if (
+          tDate.getHours() === yDate.getHours() &&
+          tDate.getMinutes() === yDate.getMinutes()
+        ) {
+          yesterdayPercent = Math.round((yesterday[i].count / 180) * 100);
+        }
+      }
+
+      // Create a new data object.
+      const newData = {
+        time: format(new Date(todayItem.date), 'HH:mm'),
+        todayPercent: Math.round((todayItem.count / 180) * 100),
+        yesterdayPercent: yesterdayPercent
+      };
+      console.log(newData);
+      combinedDataArray.push(newData);
+    });
+
+    return combinedDataArray;
+  };
+
   const getColour = value => {
     const hue = ((1 - value) * 120).toString(10);
     return ['hsl(', hue, ',100%,50%)'].join('');
@@ -41,6 +77,7 @@ const Data = () => {
   const pSwipes = current[1]['powerbase'];
   const pPercent = (pSwipes / 180) * 100;
   const pColour = getColour(pPercent / 100);
+  const data = combineData(today['holywell'], yesterday['holywell']);
 
   return (
     <div className="container">
@@ -60,7 +97,7 @@ const Data = () => {
                 </div>
               </div>
               <div className="col">
-                <Chart data={yesterday['holywell']} />
+                <Chart data={data} />
               </div>
             </div>
           </div>
