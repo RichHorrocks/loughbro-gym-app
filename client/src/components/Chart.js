@@ -1,5 +1,4 @@
 import React from 'react';
-import { format } from 'date-fns';
 import {
   LineChart,
   Line,
@@ -12,17 +11,6 @@ import {
 } from 'recharts';
 
 const Chart = ({ data }) => {
-  // const dataWithTimes = data.map(item => {
-  //   const time = format(new Date(item.date), 'HH:mm');
-  //   const percentage = (item.count / 180) * 100;
-  //
-  //   return {
-  //     ...item,
-  //     percentage: Math.round(percentage),
-  //     date: time
-  //   };
-  // });
-
   return (
     <ResponsiveContainer width={700} height="99%">
       <LineChart
@@ -57,6 +45,7 @@ const Chart = ({ data }) => {
           dataKey="yesterdayPercent"
           stroke="#e6a587"
           activeDot={{ r: 8 }}
+          connectNulls={true}
         />
       </LineChart>
     </ResponsiveContainer>

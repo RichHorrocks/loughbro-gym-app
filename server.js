@@ -57,12 +57,12 @@ if (port === 5000) {
     scraperFunctions.runCron();
   });
 
-  cron.schedule('*/10 7-22 * * 1-5', () => {
+  cron.schedule('*/10 7-21 * * 1-5', () => {
     console.log('Running cron #2');
     scraperFunctions.runCron();
   });
 
-  cron.schedule('*/10 8-21 * * 0,6', () => {
+  cron.schedule('*/10 8-20 * * 0,6', () => {
     console.log('Running cron #3');
     scraperFunctions.runCron();
   });

@@ -33,14 +33,12 @@ const GymState = props => {
 
   const getToday = async () => {
     setLoading();
-    setTimeout(async function() {
-      const res = await axios.get('/today');
+    const res = await axios.get('/today');
 
-      dispatch({
-        type: GET_DATA_TODAY,
-        payload: res.data
-      });
-    }, 1000);
+    dispatch({
+      type: GET_DATA_TODAY,
+      payload: res.data
+    });
   };
 
   const getYesterday = async () => {
