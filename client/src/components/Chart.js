@@ -36,14 +36,14 @@ const Chart = ({ data }) => {
           name="Today"
           type="monotone"
           dataKey="todayPercent"
-          stroke="#8884d8"
+          stroke="#e6a587"
           activeDot={{ r: 4 }}
         />
         <Line
           name="Yesterday"
           type="monotone"
           dataKey="yesterdayPercent"
-          stroke="#e6a587"
+          stroke="#8884d8"
           activeDot={{ r: 8 }}
           connectNulls={true}
         />

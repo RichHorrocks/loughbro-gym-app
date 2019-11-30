@@ -16,6 +16,9 @@ const Data = () => {
     loading
   } = gymContext;
 
+  const holywellCapacity = 180;
+  const powerbaseCapacity = 160;
+
   useEffect(() => {
     getCurrent();
     getToday();
@@ -27,13 +30,13 @@ const Data = () => {
     return <Spinner />;
   }
 
-  const combineData = (today, yesterday) => {
+  const combineData = (capacity, today, yesterday) => {
     const combinedDataArray = [];
 
     today.forEach(todayItem => {
       const newData = {
         time: format(new Date(todayItem.date), 'HH:mm'),
-        todayPercent: Math.round((todayItem.count / 180) * 100),
+        todayPercent: Math.round((todayItem.count / capacity) * 100),
         yesterdayPercent: null
       };
       combinedDataArray.push(newData);
@@ -82,12 +85,19 @@ const Data = () => {
     //   console.log(newData);
     //   combinedDataArray.push(newData);
     // });
-
     return combinedDataArray;
   };
 
-  const hData = combineData(today['holywell'], yesterday['holywell']);
-  const pData = combineData(today['powerbase'], yesterday['powerbase']);
+  const hData = combineData(
+    holywellCapacity,
+    today['holywell'],
+    yesterday['holywell']
+  );
+  const pData = combineData(
+    powerbaseCapacity,
+    today['powerbase'],
+    yesterday['powerbase']
+  );
 
   return (
     <div className="container">
@@ -95,11 +105,13 @@ const Data = () => {
       <Container
         title="Holywell"
         swipes={current[0]['holywell']}
+        capacity={holywellCapacity}
         data={hData}
       />
       <Container
         title="Powerbase"
         swipes={current[1]['powerbase']}
+        capacity={powerbaseCapacity}
         data={pData}
       />
     </div>
