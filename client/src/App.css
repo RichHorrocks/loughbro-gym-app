@@ -2,6 +2,10 @@ body {
   margin: 1rem 0;
 }
 
+h1 {
+  color: hsl(0, 0%, 35%);
+}
+
 .title {
   color: hsl(0, 0%, 35%);
 }
