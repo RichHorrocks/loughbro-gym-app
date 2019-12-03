@@ -52,18 +52,8 @@ app.listen(port, () => console.log(`Server running on port ${port}`));
 
 // If running in a development environment, start the cron jobs.
 if (port === 5000) {
-  cron.schedule('30,40,50 6 * * 1-5', () => {
-    console.log('Running cron #1');
-    scraperFunctions.runCron();
-  });
-
-  cron.schedule('*/10 7-21 * * 1-5', () => {
+  cron.schedule('*/10 * * * *', () => {
     console.log('Running cron #2');
-    scraperFunctions.runCron();
-  });
-
-  cron.schedule('*/10 8-20 * * 0,6', () => {
-    console.log('Running cron #3');
     scraperFunctions.runCron();
   });
 }
