@@ -16,7 +16,8 @@ export default (state, action) => {
     case GET_DATA_CURRENT:
       return {
         ...state,
-        current: action.payload
+        current: action.payload.current,
+        open: action.payload.open
       };
     case GET_DATA_TODAY:
       return {

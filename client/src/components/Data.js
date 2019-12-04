@@ -11,6 +11,7 @@ const Data = () => {
     getToday,
     getYesterday,
     current,
+    open,
     today,
     yesterday,
     loading
@@ -104,12 +105,14 @@ const Data = () => {
       <h1 className="text-center">How busy is the gym?</h1>
       <Container
         title="Holywell"
+        open={open}
         swipes={current[0]['holywell']}
         capacity={holywellCapacity}
         data={hData}
       />
       <Container
         title="Powerbase"
+        open={open}
         swipes={current[1]['powerbase']}
         capacity={powerbaseCapacity}
         data={pData}

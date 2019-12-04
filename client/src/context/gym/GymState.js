@@ -12,6 +12,7 @@ import {
 const GymState = props => {
   const initialState = {
     current: [],
+    open: true,
     today: {},
     yesterday: {},
     week: [],
@@ -24,6 +25,7 @@ const GymState = props => {
   const getCurrent = async () => {
     setLoading();
     const res = await axios.get('/data');
+    console.log(res.data);
 
     dispatch({
       type: GET_DATA_CURRENT,
@@ -60,6 +62,7 @@ const GymState = props => {
     <GymContext.Provider
       value={{
         current: state.current,
+        open: state.open,
         today: state.today,
         yesterday: state.yesterday,
         loading: state.loading,

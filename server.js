@@ -11,8 +11,8 @@ const app = express();
 app.use(cors());
 
 app.get('/data', async (req, res, next) => {
-  const count = await scraperFunctions.getSwipeCount();
-  res.send(count);
+  const { count, open } = await scraperFunctions.getSwipeCount();
+  res.send({ current: count, open: open });
 });
 
 app.get('/today', async (req, res, next) => {
@@ -29,11 +29,6 @@ app.get('/yesterday', async (req, res, next) => {
   const yesterdayPowerbase = utilsFunctions.yesterdayCount(powerbase);
 
   res.json({ holywell: yesterdayHolywell, powerbase: yesterdayPowerbase });
-});
-
-app.get('/writeDB', async (req, res) => {
-  await scraperFunctions.runCron();
-  console.log('Done DB writing!');
 });
 
 // Serve static assets in production.

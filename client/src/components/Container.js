@@ -3,7 +3,7 @@ import Chart from './Chart';
 import Circle from './Circle';
 import { format } from 'date-fns';
 
-const Container = ({ title, capacity, swipes, data }) => {
+const Container = ({ title, capacity, swipes, data, open }) => {
   return (
     <div className="row">
       <div className="col">
@@ -12,7 +12,7 @@ const Container = ({ title, capacity, swipes, data }) => {
           <span className="capacity"> Capacity: {capacity}</span>
           <div className="row">
             <div className="col">
-              <Circle swipes={swipes} capacity={capacity} />
+              <Circle open={open} swipes={swipes} capacity={capacity} />
               <p className="text-center updated">
                 Updated at {format(new Date(), 'HH:mm:ss')}
               </p>
