@@ -10,6 +10,12 @@ h1 {
   color: hsl(0, 0%, 35%);
 }
 
+.github {
+  margin-left: 10px;
+  font-size: 0.6em;
+  color: hsl(0, 0%, 35%);
+}
+
 .capacity {
   font-size: 15px;
 }
@@ -33,6 +39,13 @@ h1 {
   font-size: 25px;
   line-height: 30px;
   color: hsl(0, 0%, 35%);
+}
+
+.closed {
+  font-size: 40px;
+  line-height: 30px;
+  padding-right: 15px;
+  vertical-align: middle;
 }
 
 .updated {

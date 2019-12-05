@@ -22,8 +22,7 @@ const Circle = ({ open, swipes, capacity }) => {
   } else {
     output = (
       <div className="numberCircle" style={{ backgroundColor: 'grey' }}>
-        Closed
-        <span className="percent">%</span>
+        <span className="closed">Closed</span>
       </div>
     );
   }

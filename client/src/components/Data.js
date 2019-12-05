@@ -102,7 +102,15 @@ const Data = () => {
 
   return (
     <div className="container">
-      <h1 className="text-center">How busy is the gym?</h1>
+      <h1 className="text-center">
+        How busy is the gym?
+        <a
+          href="https://github.com/RichHorrocks/loughbro-gym-app"
+          className="github"
+        >
+          <i class="fab fa-github fa-xs"></i>
+        </a>
+      </h1>
       <Container
         title="Holywell"
         open={open}
