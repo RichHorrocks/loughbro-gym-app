@@ -107,6 +107,7 @@ const Data = () => {
         <a
           href="https://github.com/RichHorrocks/loughbro-gym-app"
           className="github"
+          title="Make me better!"
         >
           <i class="fab fa-github fa-xs"></i>
         </a>
