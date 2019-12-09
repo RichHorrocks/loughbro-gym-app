@@ -24,7 +24,7 @@ const GymState = props => {
   // Get the current, live counts for the gym.
   const getCurrent = async () => {
     setLoading();
-    const res = await axios.get('/data');
+    const res = await axios.get('/api/current');
     console.log(res.data);
 
     dispatch({

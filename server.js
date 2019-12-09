@@ -4,16 +4,15 @@ const cron = require('node-cron');
 const db = require('./lib/db');
 const path = require('path');
 
+const current = require('./routes/api/current');
+
 const scraperFunctions = require('./lib/scraper');
 const utilsFunctions = require('./lib/utils');
 
 const app = express();
 app.use(cors());
 
-app.get('/data', async (req, res, next) => {
-  const { count, open } = await scraperFunctions.getSwipeCount();
-  res.send({ current: count, open: open });
-});
+app.use('/api/current', current);
 
 app.get('/today', async (req, res, next) => {
   const { holywell, powerbase } = db.value();
