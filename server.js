@@ -1,34 +1,20 @@
 const express = require('express');
 const cors = require('cors');
 const cron = require('node-cron');
-const db = require('./lib/db');
 const path = require('path');
 
 const current = require('./routes/api/current');
+const today = require('./routes/api/today');
+const yesterday = require('./routes/api/yesterday');
 
 const scraperFunctions = require('./lib/scraper');
-const utilsFunctions = require('./lib/utils');
 
 const app = express();
 app.use(cors());
 
 app.use('/api/current', current);
-
-app.get('/today', async (req, res, next) => {
-  const { holywell, powerbase } = db.value();
-  const todayHolywell = utilsFunctions.todayCount(holywell);
-  const todayPowerbase = utilsFunctions.todayCount(powerbase);
-
-  res.json({ holywell: todayHolywell, powerbase: todayPowerbase });
-});
-
-app.get('/yesterday', async (req, res, next) => {
-  const { holywell, powerbase } = db.value();
-  const yesterdayHolywell = utilsFunctions.yesterdayCount(holywell);
-  const yesterdayPowerbase = utilsFunctions.yesterdayCount(powerbase);
-
-  res.json({ holywell: yesterdayHolywell, powerbase: yesterdayPowerbase });
-});
+app.use('/api/today', today);
+app.use('/api/yesterday', yesterday);
 
 // Serve static assets in production.
 if (process.env.NODE_ENV === 'production') {
