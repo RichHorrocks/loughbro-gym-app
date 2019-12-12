@@ -1,4 +1,5 @@
 const express = require('express');
+const connectDB = require('./config/db');
 const cors = require('cors');
 const cron = require('node-cron');
 const path = require('path');
@@ -12,6 +13,10 @@ const scraperFunctions = require('./lib/scraper');
 const app = express();
 app.use(cors());
 
+// Connect to the database.
+connectDB();
+
+// Set up the API routes.
 app.use('/api/current', current);
 app.use('/api/today', today);
 app.use('/api/yesterday', yesterday);

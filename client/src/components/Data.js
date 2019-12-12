@@ -109,7 +109,7 @@ const Data = () => {
           className="github"
           title="Make me better!"
         >
-          <i class="fab fa-github fa-xs"></i>
+          <i className="fab fa-github fa-xs"></i>
         </a>
       </h1>
       <Container
