@@ -11,7 +11,6 @@ router.get('/', async (req, res, next) => {
   // Read Holywell data from MongoDB, filtering for today only.
   const yesterday = moment().subtract(1, 'days');
   const day = yesterday.day();
-  console.log('DAY is ', day);
   let yesterdayHolywell;
   let yesterdayPowerbase;
 

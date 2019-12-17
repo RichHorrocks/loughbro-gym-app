@@ -58,34 +58,6 @@ const Data = () => {
       }
     });
 
-    // // For each entry in today's data, find the data from yesterday for the
-    // // same time.
-    // today.forEach(todayItem => {
-    //   // Create a date object.
-    //   const tDate = new Date(todayItem.date);
-    //   let yesterdayPercent = null;
-    //
-    //   // Find the count from the same time yesterday.
-    //   for (let i = 0; i < yesterday.length; i++) {
-    //     const yDate = new Date(yesterday[i].date);
-    //
-    //     if (
-    //       tDate.getHours() === yDate.getHours() &&
-    //       tDate.getMinutes() === yDate.getMinutes()
-    //     ) {
-    //       yesterdayPercent = Math.round((yesterday[i].count / 180) * 100);
-    //     }
-    //   }
-    //
-    //   // Create a new data object.
-    //   const newData = {
-    //     time: format(new Date(todayItem.date), 'HH:mm'),
-    //     todayPercent: Math.round((todayItem.count / 180) * 100),
-    //     yesterdayPercent: yesterdayPercent
-    //   };
-    //   console.log(newData);
-    //   combinedDataArray.push(newData);
-    // });
     return combinedDataArray;
   };
 
