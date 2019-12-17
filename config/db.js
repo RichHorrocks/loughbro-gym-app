@@ -14,7 +14,7 @@ const connectDB = async _callback => {
       _callback();
     }
   } catch (err) {
-    console.error(err.message);
+    console.log(err.message);
     process.exit(1);
   }
 };
@@ -24,7 +24,7 @@ const disconnectDB = async () => {
     await mongoose.disconnect();
     console.log('MongoDB disconnected.');
   } catch (err) {
-    console.error(err.message);
+    console.log(err.message);
     process.exit(1);
   }
 };
