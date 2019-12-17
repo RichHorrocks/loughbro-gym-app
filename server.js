@@ -1,5 +1,5 @@
 const express = require('express');
-const connectDB = require('./config/db');
+const db = require('./config/db');
 const cors = require('cors');
 const cron = require('node-cron');
 const path = require('path');
@@ -8,13 +8,13 @@ const current = require('./routes/api/current');
 const today = require('./routes/api/today');
 const yesterday = require('./routes/api/yesterday');
 
-const scraperFunctions = require('./lib/scraper');
+const scraper = require('./lib/scraper');
 
 const app = express();
 app.use(cors());
 
 // Connect to the database.
-connectDB();
+db.connectDB();
 
 // Set up the API routes.
 app.use('/api/current', current);
@@ -39,6 +39,6 @@ app.listen(port, () => console.log(`Server running on port ${port}`));
 if (port === 5000) {
   cron.schedule('*/10 * * * *', () => {
     console.log('Running cron #2');
-    scraperFunctions.runCron();
+    scraper.runCron();
   });
 }
