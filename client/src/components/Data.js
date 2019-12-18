@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { format } from 'date-fns';
+import roundToNearestMinutes from 'date-fns/roundToNearestMinutes';
 import Spinner from './layout/Spinner';
 import Container from './Container';
 import GymContext from '../context/gym/gymContext';
@@ -36,7 +37,10 @@ const Data = () => {
 
     today.forEach(todayItem => {
       const newData = {
-        time: format(new Date(todayItem.date), 'HH:mm'),
+        time: format(
+          roundToNearestMinutes(new Date(todayItem.date), { nearestTo: 10 }),
+          'HH:mm'
+        ),
         todayPercent: Math.round((todayItem.count / capacity) * 100),
         yesterdayPercent: null
       };
@@ -44,7 +48,10 @@ const Data = () => {
     });
 
     yesterday.forEach(yesterdayItem => {
-      const yesterdayTime = format(new Date(yesterdayItem.date), 'HH:mm');
+      const yesterdayTime = format(
+        roundToNearestMinutes(new Date(yesterdayItem.date), { nearestTo: 10 }),
+        'HH:mm'
+      );
       const item = combinedDataArray.find(({ time }) => time === yesterdayTime);
 
       if (item) {
