@@ -57,11 +57,23 @@ const Data = () => {
       if (item) {
         item.yesterdayPercent = Math.round((yesterdayItem.count / 180) * 100);
       } else {
-        combinedDataArray.push({
-          time: yesterdayTime,
-          todayPercent: null,
-          yesterdayPercent: Math.round((yesterdayItem.count / 180) * 100)
-        });
+        if (yesterdayTime < combinedDataArray[0].time) {
+          console.log(
+            `${yesterdayTime} is before ${combinedDataArray[0].time}`
+          );
+          combinedDataArray.unshift({
+            time: yesterdayTime,
+            todayPercent: null,
+            yesterdayPercent: Math.round((yesterdayItem.count / 180) * 100)
+          });
+        } else {
+          console.log(`${yesterdayTime} is after ${combinedDataArray[0].time}`);
+          combinedDataArray.push({
+            time: yesterdayTime,
+            todayPercent: null,
+            yesterdayPercent: Math.round((yesterdayItem.count / 180) * 100)
+          });
+        }
       }
     });
 
